@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Sofia+Sans:wght@300;500;700&display=swap");
+.footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+  margin-top: 20px;
+  padding: 24px;
+}
+
+.logo {
+  width: 61px;
+}
+
+.logo a {
+  height: 100%;
+}
+
+.rights {
+  color: #576067;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.rights a {
+  color: #8b57c6;
+}
+
+.socials {
+  display: flex;
+  gap: 15px;
+}
+
+.socials svg {
+  width: 24px;
+  height: 24px;
+  fill: #576067;
+}
+
+.socials svg:hover {
+  fill: #8b57c6;
+}/*# sourceMappingURL=footer.module.css.map */
