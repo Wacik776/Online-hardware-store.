@@ -63,7 +63,7 @@ ul, li {
 
 .container {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 20px;
 }
 

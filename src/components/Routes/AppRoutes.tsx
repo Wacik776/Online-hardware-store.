@@ -5,7 +5,7 @@ import { Home } from '../Home/Home'
 export const AppRoutes = () => {
   return (
     <Routes>
-        <Route index element={<Home/>}/>``
+        <Route index element={<Home/>}/>
     </Routes>
   )
 }

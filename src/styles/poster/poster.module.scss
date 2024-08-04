@@ -1,0 +1,48 @@
+@use "../variables" as *;
+
+.home {
+  position: relative;
+  flex-grow: 1;
+  padding: 50px;
+}
+
+.title{
+  text-align: center;
+  font-weight: 900;
+  font-size: 119px;
+  line-height: 145px;
+  color: $bg;
+  font-weight: 900;
+}
+
+.product{
+  position: relative;
+  padding-left: 42px;
+  display: flex;
+  align-items: stretch;
+  margin-top: 9px;
+}
+
+.subtitle{
+  line-height: 20px;
+  color: $sea;
+  text-transform: uppercase;
+}
+
+.head{
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 51px;
+  color: $light;
+  text-transform: uppercase;
+  max-width: 500px;
+  margin: 10px 0 24px 0;
+}
+
+.image {
+  position: relative;
+  flex-grow: 1;
+  height: 250px;
+}
+
+
