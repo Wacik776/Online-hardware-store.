@@ -35,5 +35,7 @@
 .footer {
   margin-top: auto;
   display: flex;
+  flex-direction: column;
+  line-height: 1.5;
   justify-content: space-between;
 }/*# sourceMappingURL=sideBar.module.css.map */

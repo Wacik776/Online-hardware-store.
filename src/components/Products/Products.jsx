@@ -4,17 +4,17 @@ import { Link } from "react-router-dom";
 
 export const Products = ({ title, products = [], amount, style = {} }) => {
   const list = products.filter((_, i) => i < amount);
-  console.log(list)
   return (
     <section className={styles.products} style={style}>
-      {title && <h2>{title}</h2>}
+      {title && <h2 style={{margin: 10}}>{title}</h2>}
       <div className={styles.list}>
-        {products.map(
-          ({ id, images, title, category: { name: cat }, price }) => {
+        
+        {list && list.map(
+          ({ id, images, title, category: { name: cat }, price }) => {return(
             <Link to={`/products/${id}`} key={id} className={styles.product}>
               <div
                 className={styles.image}
-                style={{ backgroundImage: `url(${images[0]})` }}
+                style={{ backgroundImage: `url(${images[0]})`}}
               />
               <div className={styles.wrapper}>
                 <h3 className={styles.title}>{title}</h3>
@@ -26,13 +26,13 @@ export const Products = ({ title, products = [], amount, style = {} }) => {
                       {Math.floor(price * 1.2)}$
                     </div>
                   </div>
-                  <div className={styles.purchase}>
-                    {Math.floor(Math.random() * 20 + 1)}purchased
+                  <div className={styles.purchases}>
+                    {Math.floor(Math.random() * 20 + 1)} Purchased
                   </div>
                 </div>
               </div>
-            </Link>;
-          }
+            </Link>
+          )}
         )}
       </div>
     </section>
