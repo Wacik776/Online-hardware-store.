@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Poster } from "../Poster/Poster";
+// import { Poster } from "../Poster/Poster";
 import { Products } from "../Products/Products";
 import { Categories } from "../Categories/Categories";
 export const Home = () => {
@@ -7,7 +7,7 @@ export const Home = () => {
   return (
     <>
       <div>
-        <Poster />
+        
         <Products products={products.list} amount={5} title="Trending"/>
         <Categories categories={categories.list} amount={5} title="View" />
       </div>

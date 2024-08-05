@@ -66,6 +66,7 @@ ul, li {
 
 .container {
   display: flex;
+  flex-direction: column;
   flex-wrap: nowrap;
   gap: 20px;
 }

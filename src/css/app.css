@@ -1,4 +1,9 @@
 .app {
   width: 1274px;
   margin: 0 auto;
+}
+
+.group {
+  display: flex;
+  gap: 20px;
 }/*# sourceMappingURL=app.css.map */
