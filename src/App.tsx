@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
 import { AppRoutes } from "./components/Routes/AppRoutes";
-import { SideBar } from "./components/SideBar/SideBar.jsx";
+import { SidePoster } from "./components/SidePoster/SidePoster.jsx";
 import { Poster } from "./components/Poster/Poster.jsx";
 import "./styles/app.scss";
 import { useEffect } from "react";
@@ -19,11 +19,6 @@ export function App() {
     <div className="app">
       <Header />
       <div className="container">
-        <div className="group">
-          <SideBar />
-          <Poster />
-        </div>
-
         <AppRoutes />
       </div>
       <Footer />
