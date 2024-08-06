@@ -24,6 +24,11 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-size: 140%;
+  transition: background-size 0.25s ease;
+}
+.image:hover {
+  background-size: 160%;
 }
 
 .wrapper {
