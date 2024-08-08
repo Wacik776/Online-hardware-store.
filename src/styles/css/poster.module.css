@@ -3,12 +3,13 @@
   position: relative;
   flex-grow: 1;
   padding: 50px;
+  font-family: "Montserrat", sans-serif;
 }
 
 .title {
   text-align: center;
   font-weight: 900;
-  font-size: 119px;
+  font-size: 100px;
   line-height: 145px;
   color: #212123;
   font-weight: 900;
@@ -30,7 +31,7 @@
 
 .head {
   font-weight: 700;
-  font-size: 42px;
+  font-size: 40px;
   line-height: 51px;
   color: #f6f6f7;
   text-transform: uppercase;

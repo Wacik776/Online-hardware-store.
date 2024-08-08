@@ -2,6 +2,7 @@
 .section {
   margin-block: 15px;
   padding: 10px;
+  font-family: "Montserrat", sans-serif;
 }
 .section h2 {
   font-size: 30px;

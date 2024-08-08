@@ -6,5 +6,6 @@
 .group {
   display: flex;
   gap: 20px;
+  position: static;
   margin-bottom: 30px;
 }/*# sourceMappingURL=app.css.map */

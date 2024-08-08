@@ -4,12 +4,13 @@
   position: relative;
   flex-grow: 1;
   padding: 50px;
+  font-family: $font-family-main;
 }
 
 .title{
   text-align: center;
   font-weight: 900;
-  font-size: 119px;
+  font-size: 100px;
   line-height: 145px;
   color: $bg;
   font-weight: 900;
@@ -31,7 +32,7 @@
 
 .head{
   font-weight: 700;
-  font-size: 42px;
+  font-size: 40px;
   line-height: 51px;
   color: $light;
   text-transform: uppercase;
