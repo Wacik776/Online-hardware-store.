@@ -2,16 +2,24 @@ import React, { useEffect, useState } from "react";
 import styles from "../../styles/product/product.module.scss";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../utils/routes";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../../features/user/userSlice";
 
 const SIZES = [4, 4.5, 5, 5.5, 6, 6.5, 7];
 
-export const Product = ({ images, title, price, description }) => {
+export const Product = (item) => {
+  let { images, title, price, description } = item;
   let [currentImg, setCurrentImg] = useState("Loading");
   let [currentSize, setCurrentSize] = useState();
+  const dispatch = useDispatch();
+  const addToCart = (product) => {
+    dispatch(addItemToCart(product));
+  };
+
   useEffect(() => {
     if (images.length == 0) return;
-    setCurrentImg(images[0])
-  },[images]);
+    setCurrentImg(images[0]);
+  }, [images]);
   return (
     <section className={styles.product}>
       <div className={styles.images}>
@@ -27,7 +35,9 @@ export const Product = ({ images, title, price, description }) => {
               className={styles.image}
               key={index}
               style={{ backgroundImage: `url(${image})` }}
-              onClick={() => {setCurrentImg(image)}}
+              onClick={() => {
+                setCurrentImg(image);
+              }}
             />
           ))}
         </div>
@@ -42,7 +52,15 @@ export const Product = ({ images, title, price, description }) => {
           <span>Sizes:</span>
           <div className={styles.list}>
             {SIZES.map((size) => (
-              <div className={styles[`size-${currentSize==size? 'active' : ''}`]} onClick={() => {setCurrentSize(size)}} key={size}>
+              <div
+                className={
+                  styles[`size-${currentSize == size ? "active" : ""}`]
+                }
+                onClick={() => {
+                  setCurrentSize(size);
+                }}
+                key={size}
+              >
                 {size}
               </div>
             ))}
@@ -50,7 +68,9 @@ export const Product = ({ images, title, price, description }) => {
         </div>
         <p className={styles.description}>{description}</p>
         <div className={styles.actions}>
-          <button disabled={!currentSize} className={styles.add}>Add to Cart</button>
+          <button onClick={()=>addToCart(item)} disabled={!currentSize} className={styles.add}>
+            Add to Cart
+          </button>
           <button className={styles.favourite}>Add to Favourites</button>
         </div>
         <div className={styles.bottom}>

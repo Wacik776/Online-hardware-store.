@@ -2,14 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Products } from "../Products/Products";
 import { Categories } from "../Categories/Categories";
 import { Banner } from "../Banner/Banner";
-import { Poster } from "../Poster/Poster.jsx";
 import { filterByPrice } from "../../features/products/productsSlice.js";
 import { useEffect } from "react";
 import { SidePoster } from "../SidePoster/SidePoster.jsx";
 export const Home = () => {
   const dispath = useDispatch();
   const {
-    products: { list, filtered },
+    products: { list, filtered }, 
     categories,
   } = useSelector((state) => state);
 

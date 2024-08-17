@@ -4,13 +4,14 @@ import { NavLink } from "react-router-dom";
 
 export const SideBar = () => {
   const { list } = useSelector(({ categories }) => categories);
+  let listFive = list.filter((_,i)=>i<=5)
   return (
     <section className={styles.sidebar}>
       <div className={styles.title}>CATEGORIES</div>
       <nav>
         <ul className={styles.menu}>
-          {list ? (
-            list.map(({ id, name }) => (
+          {listFive ? (
+            listFive.map(({ id, name }) => (
               <li key={id}>
                 <NavLink
                   to={`/categories/${id}`}
