@@ -45,7 +45,7 @@ export const SingleProduct = () => {
           </section>
         )}
       </div>
-      <Products style={{marginTop: 50}} products={related} amount={4} title={"Related Products"} />
+      <Products style={{marginTop: 20}} products={related} amount={4} title={"Related Products"} />
     </div>
   );
 };

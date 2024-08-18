@@ -3,7 +3,10 @@ import styles from "../../styles/product/product.module.scss";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../utils/routes";
 import { useDispatch } from "react-redux";
-import { addItemToCart } from "../../features/user/userSlice";
+import {
+  addItemToCart,
+  addItemToFavourites,
+} from "../../features/user/userSlice";
 
 const SIZES = [4, 4.5, 5, 5.5, 6, 6.5, 7];
 
@@ -14,6 +17,9 @@ export const Product = (item) => {
   const dispatch = useDispatch();
   const addToCart = (product) => {
     dispatch(addItemToCart(product));
+  };
+  const addToFavourites = (el) => {
+    dispatch(addItemToFavourites(el));
   };
 
   useEffect(() => {
@@ -68,10 +74,19 @@ export const Product = (item) => {
         </div>
         <p className={styles.description}>{description}</p>
         <div className={styles.actions}>
-          <button onClick={()=>addToCart(item)} disabled={!currentSize} className={styles.add}>
+          <button
+            onClick={() => addToCart(item)}
+            disabled={!currentSize}
+            className={styles.add}
+          >
             Add to Cart
           </button>
-          <button className={styles.favourite}>Add to Favourites</button>
+          <button
+            onClick={() => addToFavourites(item)}
+            className={styles.favourite}
+          >
+            Add to Favourites
+          </button>
         </div>
         <div className={styles.bottom}>
           <div className={styles.purchase}>19 people purchased</div>
