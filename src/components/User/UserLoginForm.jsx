@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import styles from "../../styles/user/user.module.scss";
 import { useDispatch } from "react-redux";
-import { createUser } from "../../features/user/userSlice";
+import { loginUser } from "../../features/user/userSlice";
 
-export const UserSignUpForm = ({ closeForm, currentForm }) => {
+export const UserLoginForm = ({ closeForm, currentForm }) => {
   const dispatch = useDispatch();
   const [values, setValues] = useState({
-    name: "",
     password: "",
     email: "",
-    avatar: "",
   });
   const handleChange = ({ target: { value, name } }) => {
     setValues({ ...values, [name]: value });
@@ -19,13 +17,13 @@ export const UserSignUpForm = ({ closeForm, currentForm }) => {
     e.preventDefault;
     const isNotEmpty = Object.values(values).every((val) => val);
     if (!isNotEmpty) return;
-    dispatch(createUser(values));
+    dispatch(loginUser(values));
     closeForm();
   };
   return (
     <div className={styles.wrapper}>
       <div className={styles.head}>
-        <div className={styles.title}>SIGN UP</div>
+        <div className={styles.title}>Login</div>
         <div className={styles.close} onClick={closeForm}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -58,15 +56,6 @@ export const UserSignUpForm = ({ closeForm, currentForm }) => {
             required
           />
           <input
-            type="name"
-            placeholder="Your name"
-            autoComplete="off"
-            name="name"
-            value={values.name}
-            onChange={handleChange}
-            required
-          />
-          <input
             type="password"
             placeholder="Your password"
             autoComplete="off"
@@ -75,22 +64,12 @@ export const UserSignUpForm = ({ closeForm, currentForm }) => {
             onChange={handleChange}
             required
           />
-
-          <input
-            type="avatar"
-            placeholder="Your avatar"
-            autoComplete="off"
-            name="avatar"
-            value={values.avatar}
-            onChange={handleChange}
-            required
-          />
         </div>
-        <div className={styles.link} onClick={() => currentForm("login")}>
-          I already have an account
+        <div className={styles.link} onClick={() => currentForm("signup")}>
+          Create an account
         </div>
         <button type="submit" className={styles.submit}>
-          Create an account
+          Login
         </button>
       </form>
     </div>

@@ -4,7 +4,7 @@ import { ROUTES } from "../../utils/routes";
 import avatarIcon from "../../images/avatar.jpg";
 import { LogoStuff } from "../LogoStuff/LogoStuff";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toggleForm } from "../../features/user/userSlice";
 
 export const Header = () => {
@@ -15,6 +15,11 @@ export const Header = () => {
   const handleClick = () => {
     if(!currentUser) dispatch(toggleForm(true))
   };
+  const [values, setValues] = useState({name: "GUEST", avatar: avatarIcon});
+  useEffect(()=>{
+    if (!currentUser) return;
+    setValues(currentUser) 
+  },[currentUser])
   return (
     <div className={style.header}>
       <LogoStuff />
@@ -22,9 +27,9 @@ export const Header = () => {
         <div className={style.user} onClick={handleClick}>
           <div
             className={style.avatar}
-            style={{ backgroundImage: `url(${avatarIcon})` }}
+            style={{ backgroundImage: `url(${values.avatar})` }}
           ></div>
-          <div className={style.username}>GUEST</div>
+          <div className={style.username}>{values.name}</div>
         </div>
         <form className={style.form}>
           <div className={style.icon}>

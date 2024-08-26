@@ -11,11 +11,11 @@ const initialState = {
   showForm: false,
 };
 
-const createUser = createAsyncThunk(
+export const createUser = createAsyncThunk(
   "users/createUser",
   async (payload, thunkAPI) => {
     try {
-      const response = axios.post(`${BASE_URL}/users`, payload);
+      const response = await axios.post(`${BASE_URL}/users`, payload);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -23,6 +23,27 @@ const createUser = createAsyncThunk(
     }
   }
 );
+export const loginUser = createAsyncThunk(
+  "users/loginUser",
+  async (payload, thunkAPI) => {
+    try {
+      const response = await axios.post(`${BASE_URL}/auth/login`, payload);
+      const login = await axios.get(`${BASE_URL}/auth/profile `, {
+        headers: {
+          Authorization: `Bearer ${response.data.access_token}`,
+        },
+      });
+      return login.data;
+    } catch (error) {
+      console.log(error);
+      thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+const addCurrentUser = (state, { payload }) => {
+  state.currentUser = payload;
+};
 
 const userSlice = createSlice({
   name: "user",
@@ -57,13 +78,16 @@ const userSlice = createSlice({
     toggleForm: (state, { payload }) => {
       state.showForm = payload;
     },
+    toggleFormType: (state, { payload }) => {
+      state.formType = payload;
+    },
   },
   extraReducers: (builder) => {
-    builder.addCase(createUser.fulfilled, (state, { payload }) => {
-      state.currentUser = payload;
-    });
+    builder.addCase(createUser.fulfilled, addCurrentUser);
+    builder.addCase(loginUser.fulfilled, addCurrentUser);
   },
 });
 
-export const { addItemToCart, addItemToFavourites, toggleForm } = userSlice.actions;
+export const { addItemToCart, addItemToFavourites, toggleForm, toggleFormType } =
+  userSlice.actions;
 export default userSlice.reducer;

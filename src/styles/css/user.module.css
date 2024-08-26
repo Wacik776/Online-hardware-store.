@@ -76,6 +76,7 @@
   color: #576067;
   cursor: pointer;
   text-align: center;
+  text-decoration: underline;
 }
 .link:hover {
   color: #f6f6f7;
