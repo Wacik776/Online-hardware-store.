@@ -1,0 +1,35 @@
+@use "../variables" as *;
+
+.form{
+    background-color: $dark;
+    padding: 10px;
+    margin: 20px;
+    margin-top: 0;
+    border-radius: 10px;
+    width: 900px;
+}
+
+.wrap{
+    display: flex;
+}
+
+.group{
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    margin-top: 0px;
+    width: 800px;
+    align-items: center;
+    input{
+        width: 100%;
+        margin: 7px;
+        background-color: $bg;
+        padding: 20px;
+        border-radius: 10px;
+        
+    }
+    .submit{
+        margin-top: 20px;
+        width: 100%;
+    }
+}

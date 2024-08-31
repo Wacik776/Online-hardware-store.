@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import style from "../../styles/header/header.module.scss";
 import { ROUTES } from "../../utils/routes";
 import avatarIcon from "../../images/avatar.jpg";
@@ -9,11 +9,13 @@ import { toggleForm } from "../../features/user/userSlice";
 
 export const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const fav = useSelector((state) => state.user.favourites);
   const cart = useSelector((state) => state.user.cart);
   const currentUser = useSelector((state) => state.user.currentUser);
   const handleClick = () => {
-    if(!currentUser) dispatch(toggleForm(true))
+    if(!currentUser) dispatch(toggleForm(true));
+    else navigate(ROUTES.PROFILE)
   };
   const [values, setValues] = useState({name: "GUEST", avatar: avatarIcon});
   useEffect(()=>{

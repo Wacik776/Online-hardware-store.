@@ -16,7 +16,7 @@ export const UserSignUpForm = ({ closeForm, currentForm }) => {
   };
 
   const handleSumbit = (e) => {
-    e.preventDefault;
+    e.preventDefault();
     const isNotEmpty = Object.values(values).every((val) => val);
     if (!isNotEmpty) return;
     dispatch(createUser(values));
