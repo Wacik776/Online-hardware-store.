@@ -6,22 +6,30 @@ import { LogoStuff } from "../LogoStuff/LogoStuff";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { toggleForm } from "../../features/user/userSlice";
+import { useGetProductsQuery } from "../../features/api/apiSlice";
 
 export const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const fav = useSelector((state) => state.user.favourites);
   const cart = useSelector((state) => state.user.cart);
+  const [searchValue, setSearchValue] = useState("");
   const currentUser = useSelector((state) => state.user.currentUser);
-  const handleClick = () => {
-    if(!currentUser) dispatch(toggleForm(true));
-    else navigate(ROUTES.PROFILE)
+  const handleSearchClick = ({ target: { value } }) => {
+    setSearchValue(value);
   };
-  const [values, setValues] = useState({name: "GUEST", avatar: avatarIcon});
-  useEffect(()=>{
+  const handleClick = () => {
+    if (!currentUser) dispatch(toggleForm(true));
+    else navigate(ROUTES.PROFILE);
+  };
+  const [values, setValues] = useState({ name: "GUEST", avatar: avatarIcon });
+  useEffect(() => {
     if (!currentUser) return;
-    setValues(currentUser) 
-  },[currentUser])
+    setValues(currentUser);
+  }, [currentUser]);
+
+  const { data, isLoading } = useGetProductsQuery({ title: searchValue });
+  console.log(data);
   return (
     <div className={style.header}>
       <LogoStuff />
@@ -45,11 +53,34 @@ export const Header = () => {
               name="search"
               placeholder="Type anything..."
               autoComplete="off"
-              onChange={() => {}}
-              value={""}
+              onChange={handleSearchClick}
+              value={searchValue}
             />
           </div>
-          {false && <div className={style.box}></div>}
+          {searchValue && (
+            <div className={style.box}>
+              {isLoading
+                ? "Loading..."
+                : !data.length
+                ? "No results"
+                : data.map(({ title, images, id }) => {
+                    return (
+                      <Link
+                        key={id}
+                        onClick={()=>setSearchValue("")}
+                        className={style.item}
+                        to={`/products/${id}`}
+                      >
+                        <div
+                          className={style.image}
+                          style={{ backgroundImage: `url(${images[0]})` }}
+                        />
+                        <div className={style.title}>{title}</div>
+                      </Link>
+                    );
+                  })}
+            </div>
+          )}
         </form>
         <div className={style.account}>
           <Link to={ROUTES.FAVOURITES} className={style.favourites}>
