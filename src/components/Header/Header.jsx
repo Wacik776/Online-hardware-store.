@@ -29,7 +29,6 @@ export const Header = () => {
   }, [currentUser]);
 
   const { data, isLoading } = useGetProductsQuery({ title: searchValue });
-  console.log(data);
   return (
     <div className={style.header}>
       <LogoStuff />

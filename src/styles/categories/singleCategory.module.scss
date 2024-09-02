@@ -1,0 +1,25 @@
+@use '../variables' as *;
+
+section{
+    margin-top: -20px;
+}
+
+.title{
+    font-family: $font-family-main;
+    margin: 20px;
+}
+
+.filters{
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    padding-bottom: 0;
+    .filter{
+        background: $bg;
+        width: 287px;
+        height: 45px;
+        align-content: center;
+        padding-left: 22px;
+        border-radius: 10px;
+    }
+}
