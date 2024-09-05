@@ -8,15 +8,6 @@ import { useSelector } from "react-redux";
 
 export const Category = () => {
   const { id } = useParams();
-  const [cat, setCat] = useState("");
-  const { list } = useSelector(({ categories }) => categories);
-
-  useEffect(() => {
-    if (!id || !list.length) return;
-    const { name } = list.find((item) => item.id === id * 1);
-    setCat(name);
-  });
-
   const defaultValues = {
     title: "",
     price_min: 0,
@@ -24,16 +15,37 @@ export const Category = () => {
   };
   const defaultParams = {
     categoryId: id,
+    offset: 0,
     ...defaultValues,
   };
+
+  const [cat, setCat] = useState("");
   const [values, setValues] = useState(defaultValues);
   const [params, setParams] = useState(defaultParams);
+  const [items, setItems] = useState([]);
+  const [count, setCount] = useState(8);
+
+  const { list } = useSelector(({ categories }) => categories);
   useEffect(() => {
     if (!id) return;
     setParams({ ...defaultParams, categoryId: id });
   }, [id]);
-
   const { data, isLoading, isSuccess } = useGetProductsQuery(params);
+
+  useEffect(() => {
+    if (isLoading || !data.length) return;
+    setItems([...data.slice(0, count)]);
+  }, [data, isLoading, count]);
+
+  useEffect(() => {
+    if (!id || !list.length) return;
+    setCount(8)
+    const { name } = list.find((item) => {
+      return item.id === id * 1;
+    });
+    setCat(name);
+  }, [list, id]);
+
 
   const handleChange = ({ target: { value, name } }) => {
     setValues({ ...values, [name]: value });
@@ -86,12 +98,31 @@ export const Category = () => {
         <div style={{ padding: 20 }}>
           <Products
             title=""
-            products={data}
+            products={items}
             style={{ padding: 0 }}
             amount={data.length}
           />
         </div>
       )}
+      {!data?  (
+        <div className="">Loading...</div>
+      ) : (data.length > 8 && count<=data.length)  ? (
+        <div className={style.more}>
+          <button
+            style={{
+              justifyContent: "center",
+              marginLeft: "47%",
+              marginBottom: 25,
+            }}
+            onClick={() => {
+              setParams({ ...params });
+              setCount(count + 8);
+            }}
+          >
+            See more
+          </button>
+        </div>
+      ): (<div></div>)}
     </section>
   );
 };
