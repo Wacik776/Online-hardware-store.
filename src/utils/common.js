@@ -7,4 +7,8 @@ export const buildUrl = (url, params) => {
         urlWithParams+= `${sign}${key}=${value}`
     })
     return urlWithParams
+};
+
+export const sumBy = (arr) =>{
+    return arr.reduce((acc, current)=>acc+current,0)
 }

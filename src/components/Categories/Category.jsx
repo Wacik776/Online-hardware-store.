@@ -18,7 +18,10 @@ export const Category = () => {
     offset: 0,
     ...defaultValues,
   };
-
+  const handleReset = () =>{
+    setValues(defaultValues);
+    setParams(defaultParams);
+  }
   const [cat, setCat] = useState("");
   const [values, setValues] = useState(defaultValues);
   const [params, setParams] = useState(defaultParams);
@@ -92,7 +95,7 @@ export const Category = () => {
       ) : !isSuccess || !data.length ? (
         <div className={style.back}>
           <span>No result</span>
-          <button>Reset</button>
+          <button onClick={handleReset}>Reset</button>
         </div>
       ) : (
         <div style={{ padding: 20 }}>

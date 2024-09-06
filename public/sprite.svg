@@ -33,7 +33,7 @@
     <path d="M15.625 23.6978H9.37504C3.71879 23.6978 1.30212 21.2812 1.30212 15.6249V9.37492C1.30212 3.71867 3.71879 1.302 9.37504 1.302H15.625C21.2813 1.302 23.698 3.71867 23.698 9.37492V15.6249C23.698 21.2812 21.2813 23.6978 15.625 23.6978ZM9.37504 2.8645C4.57296 2.8645 2.86462 4.57284 2.86462 9.37492V15.6249C2.86462 20.427 4.57296 22.1353 9.37504 22.1353H15.625C20.4271 22.1353 22.1355 20.427 22.1355 15.6249V9.37492C22.1355 4.57284 20.4271 2.8645 15.625 2.8645H9.37504Z"></path>
   </symbol>
 
-  <symbol fill="inherit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" id="close">
+  <symbol fill="inherit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" id="close">
     <path d="M4.375 4.375L15.625 15.625" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
     <path d="M4.375 15.625L15.625 4.375" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
   </symbol>
